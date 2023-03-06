@@ -14,7 +14,7 @@ class minecraft (
   }
   package { 'jdk-17':
     ensure => present,
-    source => $jar_url,
+    source => $java_url,
     install_options => ['--nogpgcheck'],
   }
   file {"${install_dir}/eula.txt":
@@ -23,7 +23,7 @@ class minecraft (
   }
   file {'/etc/systemd/system/minecraft.service':
     ensure => file,
-    #source => 'puppet:///modules/minecraft/minecraft.service',
+    source => 'puppet:///modules/minecraft/minecraft.service',
     #content => epp('minecraft/minecraft.service','{ install_dir => $install_dir, }')
   }
   service {'minecraft':

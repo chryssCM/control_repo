@@ -15,6 +15,7 @@ class minecraft (
   package { 'jdk-17':
     ensure => present,
     source => $jar_url,
+    install_options => ['--nogpgcheck'],
   }
   file {"${install_dir}/eula.txt":
     ensure => file,
